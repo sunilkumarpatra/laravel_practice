@@ -15,7 +15,7 @@ class CustomerController extends Controller
     {
         /* Insert Query */
         // echo "<pre>";
-        // print_r($request->all());
+        // print_r($request->all());die;
         $customer= new Customer();
         $customer->name= $request['name'];
         $customer->email= $request['email'];
@@ -26,12 +26,12 @@ class CustomerController extends Controller
         $customer->dob= $request['dob'];
         $customer->password= md5($request['password']);
         $customer->save(); 
-        return redirect('/customer/view');
+        return redirect('customer/view');
     }
     public function view()
     {
         $customer= Customer::all();
         $data=compact('customer');
-       return view('customer-view')->with($data);
+        return view('customer-view')->with($data);
     }
 }

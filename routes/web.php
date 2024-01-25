@@ -29,9 +29,14 @@ use App\Http\Controllers\CustomerController;
 // Route::get('/',[SampleController::class, 'index']);
 // Route::get('/sac',SingleActionController::class);
 // Route::resource('/re',ResourceController::class);
+Route::get('/', function () {
+    return view('index');
+});
 Route::get('/register',[RegistrationController::class, 'index']);
 Route::post('/register',[RegistrationController::class, 'register']);
 
+//Route::get('/customer',[CustomerController::class,'index']);
 Route::get('/customer',[CustomerController::class,'index']);
 Route::post('/customer/create',[CustomerController::class,'store']);
 Route::get('/customer/view',[CustomerController::class,'view']);
+
