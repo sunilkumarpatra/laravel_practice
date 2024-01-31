@@ -28,6 +28,14 @@
     </nav>
 <div class="container mt-5">
     <h2 class="mb-4">Customer Data <a name="" id="" class="btn btn-success btn-btn-sm" href="{{url('/customer')}}" role="button" style="float:right">Add</a></h2>
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <table class="table">
         <thead>
         <tr>
@@ -39,6 +47,7 @@
             <th scope="col">State</th>
             <th scope="col">Gender</th>
             <th scope="col">DOB</th>
+            <th scope="col">Action</th>
           
         </tr>
         </thead>
@@ -56,6 +65,14 @@
             <td>{{$customer->state}}</td>
             <td>{{$customer->gender}}</td>
             <td>{{$customer->dob}}</td>
+            <td>
+                <a href="{{route('customer.delete',['id' => $customer->id])}}">
+                    <button type="button" class="btn btn-danger" >Delete</button>
+                </a>
+                <a href="{{route('customer.edit',['id' => $customer->id])}}">
+                    <button type="button" class="btn btn-primary" >Edit</button>
+                </a>
+            </td>
         </tr>
         @php
         $count=$count+1;
@@ -68,6 +85,11 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script>
+    // Close the alert after 5 seconds (5000 milliseconds)
+    setTimeout(function() {
+        $('.alert').alert('close');
+    }, 5000);
+</script>
 </body>
 </html>

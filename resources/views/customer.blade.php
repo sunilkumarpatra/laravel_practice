@@ -34,13 +34,13 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required value="{{$customer->name}}">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required value="{{$customer->email}}">
                 </div>
             </div>
         </div>
@@ -48,13 +48,13 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required value="{{$customer->password}}">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password:</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="cpassword" placeholder="Confirm your password" required>
+                    <input type="password" class="form-control" id="confirmPassword" name="cpassword" placeholder="Confirm your password" required value="{{$customer->cpassword}}">
                 </div>
             </div>
         </div>
@@ -62,22 +62,21 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="country">Address:</label>
-                    <input type="text" class="form-control" id="address" name="address" placeholder="Enter your country" required>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Enter your country" required value="{{$customer->address}}">
                 </div>
             </div>
-            
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="country">Country:</label>
-                    <input type="text" class="form-control" id="country" name="country" placeholder="Enter your country" required>
+                    <input type="text" class="form-control" id="country" name="country" placeholder="Enter your country" required value="{{$customer->country}}">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="state">State:</label>
-                    <input type="text" class="form-control" id="state" name="state" placeholder="Enter your state" required>
+                    <input type="text" class="form-control" id="state" name="state" placeholder="Enter your state" required value="{{$customer->state}}">
                 </div>
             </div>
         </div>
@@ -86,20 +85,21 @@
                 <div class="form-group">
                     <label for="gender">Gender:</label>
                     <select class="form-control" id="gender" required name="gender">
-                        <option value="">Select Gender</option>
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                        <option value="O">Other</option>
+                      
+                        <option value="M" {{ $customer->gender === 'M' ? 'selected' : '' }}>Male</option>
+                        <option value="F" {{ $customer->gender === 'F' ? 'selected' : '' }}>Female</option>
+                        <option value="O" {{ $customer->gender === 'O' ? 'selected' : '' }}>Other</option>
                     </select>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="dob">Date of Birth:</label>
-                    <input type="date" class="form-control" id="dob" name="dob" required>
+                    <input type="date" class="form-control" id="dob" name="dob" required value="{{ $customer->dob }}">
                 </div>
             </div>
         </div>
+        
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

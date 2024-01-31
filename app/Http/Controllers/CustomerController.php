@@ -11,11 +11,10 @@ class CustomerController extends Controller
     {
         return view('customer');
     }
+
     public function store(Request $request)
     {
         /* Insert Query */
-        // echo "<pre>";
-        // print_r($request->all());die;
         $customer= new Customer();
         $customer->name= $request['name'];
         $customer->email= $request['email'];
@@ -26,12 +25,35 @@ class CustomerController extends Controller
         $customer->dob= $request['dob'];
         $customer->password= md5($request['password']);
         $customer->save(); 
-        return redirect('customer/view');
+        return redirect('/customer/view')->with('success', 'Customer data Created successfully!');
     }
+
     public function view()
     {
         $customer= Customer::all();
         $data=compact('customer');
         return view('customer-view')->with($data);
+    }
+
+    public function delete($id)
+    {
+       Customer::find($id)->delete();
+       return redirect('/customer/view')->with('success', 'Customer data deleted successfully!');
+    }
+
+    public function edit($id)
+    {
+        $customer=Customer::find($id);
+        
+        if(is_null($customer))
+        {
+            //customer not found
+            return view('customer-view');
+        }
+        else
+        {
+            $data=compact('customer');
+            return view('customer')->with($data);
+        }
     }
 }
